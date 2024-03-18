@@ -1,0 +1,7 @@
+import pandas as pd
+
+txt_input = r"/Users/barunghimire/Documents/reach/script/temp_file.txt"   # location of your txt file
+csv_output = r"/Users/barunghimire/Documents/reach/script/output2.csv"  # location of the csv output
+
+df = pd.read_csv(txt_input)
+df.to_csv(csv_output, index=None)
