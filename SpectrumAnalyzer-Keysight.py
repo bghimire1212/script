@@ -1,7 +1,7 @@
 
 import pyvisa
 from time import sleep
-
+from datetime import datetime
 
 class SpectrumAnalyzer(object):
     def __init__(self,
@@ -97,12 +97,18 @@ if __name__ == '__main__':
     s.sleep(5)
     meas = s.take_peak_measurements_dbm(10, delay_time_sec=.1)
     #print(meas)
+    #get current date and time
+    #now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    
+    #convert date and time to string
+    #now = str(now)
+    
     f=open("spectrum.csv","w")
     f.write("Frequency,Power\n")
     for i in range(len(meas)):
         f.write(str(5825+i)+","+str(meas[i])+"\n")
     f.close()
-    print('done')
+    print('done') 
     s.instr.close()
     print('instrument closed')
     
